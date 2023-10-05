@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = strip_tags(trim($_POST["email"]));
     $password = strip_tags(trim($_POST["password"]));
 
-	$pdo = new PDO("mysql:host=10.15.252.155;dbname=users", "develop", "@skmet0Ch@nge");
+	$pdo = new PDO("mysql:host=localhost;dbname=users", "username", "password");
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $sql = "SELECT * FROM users WHERE email = :email";
     $stmt = $pdo->prepare($sql);
@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
         try {
-            $pdo = new PDO("mysql:host=10.15.252.155;dbname=users", "develop", "@skmet0Ch@nge");
+            $pdo = new PDO("mysql:host=localhost;dbname=users", "username", "password");
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
             $stmt = $pdo->prepare("INSERT INTO users (first_name, last_name, email, password) VALUES (?, ?, ?, ?)");
