@@ -6,7 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
     
     
-    $pdo = new PDO("mysql:host=10.15.252.155;dbname=users", "develop", "@skmet0Ch@nge");
+    $pdo = new PDO("mysql:host=localhost;dbname=users", "username", "password");
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $sql = "SELECT * FROM users WHERE email = :email";
     $stmt = $pdo->prepare($sql);
